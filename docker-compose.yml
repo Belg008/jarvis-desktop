@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  jarvis-desktop:
+    build: .
+    container_name: jarvis-desktop
+    restart: always
+    ports:
+      - "3000:80"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost/"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
